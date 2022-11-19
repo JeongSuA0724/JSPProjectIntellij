@@ -1,16 +1,17 @@
-package com.crud.dao;
+package com.example.dao;
+
+import com.example.bean.BoardVO;
+import com.example.util.JDBCUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.crud.bean.BoardVO;
-import com.crud.common.JDBCUtil;
-
 public class BoardDAO {
-	
+
 	Connection conn = null;
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
@@ -114,5 +115,23 @@ public class BoardDAO {
 			e.printStackTrace();
 		} 
 		return list;
+	}
+
+	public String getPhotoFilename(int seq) {
+		String filename = null;
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(BOARD_GET);
+			stmt.setInt(1, seq);
+			rs = stmt.executeQuery();
+			if (rs.next()) {
+				filename = rs.getString("photo");
+			}
+			rs.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("===> JDBC로 getPhotoFilename() 기능 처리");
+		return filename;
 	}
 }

@@ -1,4 +1,4 @@
-package com.crud.bean;
+package com.example.bean;
 
 import java.util.Date;
 
@@ -9,7 +9,9 @@ public class BoardVO {
 	private String content;
 	private Date regdate;
 	private int cnt;
-	
+
+	private String photo;
+
 	public int getSeq() {
 		return seq;
 	}
@@ -45,5 +47,16 @@ public class BoardVO {
 	}
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
+	}
+
+    public void setSeq(String title) {
+    }
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
+	public String getPhoto() {
+		return photo;
 	}
 }
