@@ -18,7 +18,7 @@
 	JDBCUtil.FileUpload upload = new JDBCUtil.FileUpload();
 	BoardVO u = upload.uploadPhoto(request);
 	int i = boardDAO.insertBoard(u);
-	String msg = "데이터 추가 성공 !";
+	String msg = "데이터 추가 성공 !!";
 	if(i == 0) msg = "[에러] 데이터 추가 ";
 %>
 
